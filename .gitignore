@@ -1,0 +1,100 @@
+# NFL Big Data Bowl 2026 - Git Ignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Data files (large, download separately)
+data/raw/
+data/processed/
+*.csv
+*.parquet
+
+# Model weights (download from Kaggle)
+pretrained/*.pt
+pretrained/*.pth
+pretrained/**/*.pt
+pretrained/**/*.pth
+
+# Keep pretrained directory structure and README
+!pretrained/README.md
+!pretrained/.gitkeep
+
+# Training outputs
+models/
+logs/
+outputs/
+results/cv_results/*.json
+results/figures/*.png
+
+# Keep directory structure
+!models/.gitkeep
+!logs/.gitkeep
+!results/cv_results/.gitkeep
+!results/figures/.gitkeep
+
+# Scalers and pickled objects
+*.pkl
+*.pickle
+!pretrained/**/route_kmeans.pkl
+!pretrained/**/route_scaler.pkl
+
+# Kaggle
+kaggle.json
+
+# Mac
+.DS_Store
+
+# Test cache
+.pytest_cache/
+.coverage
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*~
+
+# Large files
+*.zip
+*.tar.gz
+*.tar
+
+# Submissions
+submission.csv
+submission.parquet
