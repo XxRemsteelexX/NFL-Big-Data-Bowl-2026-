@@ -378,7 +378,8 @@ nfl-bdb-2026-pretrained-weights/
 ├── gru_seed27_20fold/                (~50MB)
 ├── position_st_combined/             (~200MB)
 ├── geometric_w9_5fold/               (~100MB)
-├── perceiver_co4/                    (~200MB)
+├── perceiver_io_20fold/              (~130MB)
+├── co4_20fold/                       (~50MB)
 └── README.md                         (download instructions)
 
 Total: ~1GB
@@ -386,12 +387,12 @@ Total: ~1GB
 
 **Phase 2: Hugging Face** (Long-term)
 ```
-huggingface.co/yourusername/nfl-bdb-2026-models
+huggingface.co/glenndalbey/nfl-bdb-2026-models
 ```
 
 **Phase 3: Kaggle Datasets** (Community Access)
 ```
-kaggle.com/datasets/yourusername/nfl-bdb-2026-models
+kaggle.com/datasets/gdalbey/nfl-bdb-2026-models
 ```
 
 ---
@@ -403,12 +404,15 @@ kaggle.com/datasets/yourusername/nfl-bdb-2026-models
 import gdown
 from pathlib import Path
 
+# Replace with actual Google Drive file IDs when weights are uploaded
 GDRIVE_IDS = {
-    '6layer_st': 'YOUR_GOOGLE_DRIVE_FILE_ID',
-    'multiscale_cnn': 'YOUR_GOOGLE_DRIVE_FILE_ID',
-    'gru_seed27': 'YOUR_GOOGLE_DRIVE_FILE_ID',
-    'position_st': 'YOUR_GOOGLE_DRIVE_FILE_ID',
-    'geometric': 'YOUR_GOOGLE_DRIVE_FILE_ID',
+    '6layer_st': '<file_id>',
+    'multiscale_cnn': '<file_id>',
+    'gru_seed27': '<file_id>',
+    'position_st': '<file_id>',
+    'geometric': '<file_id>',
+    'perceiver_io': '<file_id>',
+    'co4': '<file_id>',
 }
 
 def download_model(model_name, output_dir='pretrained/'):
@@ -427,7 +431,7 @@ def download_model(model_name, output_dir='pretrained/'):
         zip_ref.extractall(output_dir)
 
     output_zip.unlink()  # Remove zip
-    print(f' Downloaded and extracted: {model_name}')
+    print(f'Downloaded and extracted: {model_name}')
 
 if __name__ == '__main__':
     for model in GDRIVE_IDS.keys():
