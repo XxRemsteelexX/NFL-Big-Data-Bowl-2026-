@@ -757,31 +757,11 @@ nfl-big-data-bowl-2026/
 
 ---
 
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-Areas for contribution:
-- Additional model architectures
-- Improved data augmentation techniques
-- Better feature engineering
-- Visualization tools
-- Documentation improvements
-
----
-
-## License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
-
----
-
 ## Acknowledgments
 
 - **NFL Big Data Bowl 2026** competition organizers
 - **Kaggle community** for insights and discussions
 - **PyTorch team** for the excellent deep learning framework
-- **Competition participants** for pushing the boundaries
 
 ---
 
@@ -790,48 +770,4 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - **Author**: Glenn Dalbey
 - **Kaggle**: [gdalbey](https://www.kaggle.com/gdalbey)
 - **GitHub**: [XxRemsteelexX](https://github.com/XxRemsteelexX)
-
----
-
-## Citation
-
-If you find this work useful, please cite:
-
-```bibtex
-@misc{nfl_bdb_2026,
-  author = {Glenn Dalbey},
-  title = {NFL Big Data Bowl 2026 - Deep Learning for Player Trajectory Prediction},
-  year = {2026},
-  publisher = {GitHub},
-  howpublished = {\url{https://github.com/XxRemsteelexX/NFL-Big-Data-Bowl-2026-}},
-  note = {Kaggle Competition - Public LB: 0.541}
-}
-```
-
----
-
-## Star History
-
-If you found this repository helpful, please consider giving it a star.
-
-[![Star History Chart](https://api.star-history.com/svg?repos=XxRemsteelexX/NFL-Big-Data-Bowl-2026-&type=Date)](https://star-history.com/#XxRemsteelexX/NFL-Big-Data-Bowl-2026-&Date)
-
----
-
-## Performance Timeline
-
-Our model development journey:
-
-```
-Week 1-2:   Baseline models (GRU, simple Transformer) → 0.60-0.65
-Week 3-4:   Feature engineering + augmentation → 0.57-0.59
-Week 5-6:   Deep transformers (4L, 6L) → 0.547-0.552
-Week 7-8:   Multi-scale CNN, Position-specific → 0.548-0.553
-Week 9-10:  Geometric features, GNN embeddings → 0.557-0.559
-Week 11-12: Ensembling + TTA → 0.541 (Best)
-```
-
----
-
-**NFL Big Data Bowl 2026**
 
