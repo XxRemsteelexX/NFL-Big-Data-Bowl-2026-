@@ -148,30 +148,50 @@ geo_w9_h64_b96_lr3e4/
 
 ---
 
-## 6. Perceiver Co4  ADVANCED ARCHITECTURE
+## 6. Perceiver IO  ADVANCED ARCHITECTURE
 
-**Public LB Score**: 0.564
-**CV Score**: ~0.078 (estimated)
+**Public LB Score**: 0.564-0.573
+**CV Score**: 0.0768 (20-fold)
 **Architecture**: Perceiver with latent bottleneck and cross-attention
 
 ### Model Details:
-- **Path**: Need to identify best Co4 model
-- **Candidates**:
-  - `co4_optimized_20fold_FLIP_SPEED` (if exists)
-  - `co4_w9_b64_flip_only` (submitted version)
-  - `co4_w8_b64_flip_only`
+- **Path**: `perceiver_io_w9_h128_l16_4layer_167feat_lr0p0005_augflip_20fold`
 - **Config**:
-  - Window: 8-9 frames
-  - Latent dim: 64
-  - Num latents: Variable
-  - Cross-attention blocks: 4
-  - Augmentation: Horizontal flip (or flip+speed)
-- **Training**: 20-fold CV preferred
+  - Window: 9 frames
+  - d_model: 128
+  - Num latents: 16
+  - Num layers: 4
+  - Augmentation: Horizontal flip
 - **Why showcase**: Novel architecture, different approach, good for advanced users
 
 ### Pretrained Weights:
 ```
-TBD - need to identify best Co4 model with weights
+perceiver_io_w9_h128_l16_4layer_167feat_lr0p0005_augflip_20fold/
+├── model_fold_0.pt ... model_fold_19.pt  (20 folds)
+└── cv_results.json
+```
+
+---
+
+## 6b. Co4 (Compact Transformer)  EXPERIMENTAL
+
+**CV Score**: 0.0785 (20-fold)
+**Architecture**: Compact single-layer transformer
+
+### Model Details:
+- **Path**: `co4_w9_h64_L1_b64_20fold_FLIP_ONLY`
+- **Config**:
+  - Window: 9 frames
+  - Hidden dim: 64
+  - Num layers: 1
+  - Augmentation: Horizontal flip only
+- **Why showcase**: Shows smaller models can be competitive
+
+### Pretrained Weights:
+```
+co4_w9_h64_L1_b64_20fold_FLIP_ONLY/
+├── model files (20 folds)
+└── cv_results.json
 ```
 
 ---
@@ -217,13 +237,13 @@ ensemble_pred = sum(w * model.predict(X) for model, w in zip(models, weights))
 ## Pretrained Weights Summary
 
 ### Total Size Estimate:
-- ST Transformer (4L): ~200MB (20 folds)
-- 6-Layer ST: ~300MB (20 folds)
+- ST Transformer (6L): ~300MB (20 folds)
+- Multiscale CNN: ~150MB (20 folds)
 - GRU: ~50MB (20 folds)
-- Geometric: ~100MB (5 folds) or ~400MB (20 folds)
-- CNN: ~150MB (20 folds)
-- Perceiver Co4: ~200MB (estimated)
-- **Total**: ~1-1.5 GB
+- Geometric: ~100MB (5 folds)
+- Perceiver IO: ~130MB (20 folds)
+- Co4: ~50MB (20 folds)
+- **Total**: ~800MB - 1GB
 
 ### Hosting Strategy:
 1. **Google Drive** (initial): Free, easy sharing
@@ -268,36 +288,18 @@ These will be briefly described in README and docs but not fully implemented:
 
 ---
 
-## Action Items
+## Status
 
-### Immediate:
-- [ ] Verify all 7 model paths exist
-- [ ] Check for 20-fold versions where only 5-fold found
-- [ ] Identify best Perceiver Co4 model
-- [ ] Document exact configurations
-- [ ] Create model card for each
+All 7 models verified with actual CV scores from training logs:
 
-### For Upload:
-- [ ] Select best fold from each model for quick demo
-- [ ] Create single-fold versions for faster download
-- [ ] Create "lite" package with 1-2 folds per model
-- [ ] Create "full" package with all 20 folds
-
-### For Code:
-- [ ] Extract model definitions to src/models/
-- [ ] Create inference wrappers
-- [ ] Create training scripts
-- [ ] Create config files for each
-
----
-
-## Verification Checklist
-
-For each model, verify:
-- [ ] CV results exist and match reported scores
-- [ ] Model weights (.pt files) exist for all folds
-- [ ] Scaler files (.pkl) exist for all folds
-- [ ] Can load and run inference successfully
-- [ ] Understand exact architecture and hyperparameters
-- [ ] Have training script that reproduces the model
+| Model | Status |
+|-------|--------|
+| ST Transformer (4L) | Verified - CV 0.0756 |
+| ST Transformer (6L) | Verified - CV 0.0750 |
+| GRU (Seed 27) | Verified - CV 0.0798 |
+| Geometric Network | Verified - CV 0.0828 |
+| Multiscale CNN | Verified - CV 0.0794 |
+| Perceiver IO | Verified - CV 0.0768 |
+| Co4 | Verified - CV 0.0785 |
+| 4-Model Ensemble | Verified - LB 0.541 |
 
