@@ -44,6 +44,8 @@
 
 **Note**: All models used Test-Time Augmentation (TTA) in final submissions for ~0.005-0.010 improvement.
 
+![Model Performance Comparison](figures/model_performance.png)
+
 ---
 
 ## Quick Start
@@ -350,6 +352,8 @@ ensemble_weights_4model = {
 
 **Key Innovation**: Diversity from different architectures (Transformer, CNN, RNN) provides better generalization than any single model. Adding position-specific models (4th model) gave marginal +0.001 improvement.
 
+![Ensemble Composition](figures/ensemble_weights.png)
+
 **Code**: [`src/models/ensemble.py`](src/models/ensemble.py)
 **Training Script**: N/A (uses pretrained models)
 **Notebook**: [`notebooks/03_inference_ensemble_guide.ipynb`](notebooks/03_inference_ensemble_guide.ipynb)
@@ -534,6 +538,8 @@ geometric_features = {
 
 **Finding**: Horizontal flip most effective. Combining augmentations gives cumulative benefits.
 
+![Augmentation Impact](figures/augmentation_impact.png)
+
 ---
 
 ### Architecture Depth
@@ -546,6 +552,8 @@ geometric_features = {
 | 8L | 0.549 | 24h | High |
 
 **Finding**: 6 layers optimal. Deeper models (8L+) show diminishing returns and overfitting.
+
+![Architecture Depth vs Performance](figures/architecture_depth.png)
 
 ---
 
