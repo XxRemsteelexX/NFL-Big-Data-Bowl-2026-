@@ -13,19 +13,18 @@ long_description = (this_directory / "README.md").read_text()
 setup(
     name="nfl-bdb-2026",
     version="1.0.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    author="Glenn Dalbey",
+    author_email="dalbeyglenn@gmail.com",
     description="Deep Learning Models for NFL Player Trajectory Prediction",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/nfl-big-data-bowl-2026",
+    url="https://github.com/XxRemsteelexX/NFL-Big-Data-Bowl-2026-",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/nfl-big-data-bowl-2026/issues",
-        "Source": "https://github.com/yourusername/nfl-big-data-bowl-2026",
+        "Bug Reports": "https://github.com/XxRemsteelexX/NFL-Big-Data-Bowl-2026-/issues",
+        "Source": "https://github.com/XxRemsteelexX/NFL-Big-Data-Bowl-2026-",
         "Kaggle Competition": "https://www.kaggle.com/competitions/nfl-big-data-bowl-2026",
     },
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
+    packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",
@@ -79,9 +78,6 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "nfl-train=scripts.train.train_st_transformer:main",
-            "nfl-predict=scripts.inference.predict:main",
-            "nfl-ensemble=scripts.inference.predict_ensemble:main",
             "nfl-download=scripts.download_pretrained:main",
         ],
     },

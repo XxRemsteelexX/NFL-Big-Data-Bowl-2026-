@@ -55,10 +55,10 @@ pretrained/**/*.pth
 !pretrained/README.md
 !pretrained/.gitkeep
 
-# Training outputs
-models/
-logs/
-outputs/
+# Training outputs (root-level only, not src/models/)
+/models/
+/logs/
+/outputs/
 results/cv_results/*.json
 results/figures/*.png
 

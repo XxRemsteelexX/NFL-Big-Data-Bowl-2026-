@@ -6,16 +6,14 @@ A comprehensive deep learning package for predicting NFL player movements.
 Main modules:
     - models: ST Transformer, GRU, CNN, Ensemble
     - data: Preprocessing, augmentation, datasets
-    - training: Training utilities, losses, metrics
-    - inference: Prediction and TTA
-    - utils: Helpers and visualization
+    - config: Central configuration
 
-Author: Your Name
+Author: Glenn Dalbey
 Version: 1.0.0
 """
 
 __version__ = "1.0.0"
-__author__ = "Your Name"
+__author__ = "Glenn Dalbey"
 
 # Import main components for easy access
 from .config import Config, STTransformerConfig, GRUConfig, MultiScaleCNNConfig

@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Kaggle](https://img.shields.io/badge/Kaggle-Competition-20BEFF)](https://www.kaggle.com/competitions/nfl-big-data-bowl-2026)
 
-> Deep learning models for predicting NFL player movements, achieving **0.541 Public LB** on Kaggle's Big Data Bowl 2026.
+> Deep learning models for predicting NFL player movements, achieving **0.540 Public LB** (94th / 1,134 teams, Bronze Medal) on Kaggle's Big Data Bowl 2026.
 
 ## Competition Results
 
@@ -35,7 +35,7 @@
 | Model | Public LB | CV Score | Training Time (20-fold) | Architecture Type |
 |-------|-----------|----------|-------------------------|-------------------|
 | **3-Model Ensemble** | **0.540**  | - | - | Ensemble (Competition) |
-| **4-Model Ensemble** | **0.541** | - | - | Ensemble (Post-deadline) |
+| **4-Model Ensemble** | **0.541** | - | - | Ensemble (post-deadline) |
 | 6-Layer ST Transformer | 0.547 | 0.0750 | 16 hours | Transformer |
 | Multiscale CNN | 0.548 | ~0.0751 | 12 hours | CNN + Transformer |
 | Position-Specific ST | 0.553 | ~0.075 | 10 hours | Transformer |
@@ -664,96 +664,60 @@ See [docs/MODELS_TO_SHOWCASE.md](docs/MODELS_TO_SHOWCASE.md) for more details on
 ## Repository Structure
 
 ```
-nfl-big-data-bowl-2026/
-├── README.md                          # This file
-├── LICENSE                            # MIT License
-├── requirements.txt                   # Python dependencies
-├── setup.py                           # Package installation
+NFL-Big-Data-Bowl-2026-/
+├── README.md                             # This file
+├── LICENSE                               # MIT License
+├── requirements.txt                      # Python dependencies
+├── setup.py                              # Package installation
 │
-├── docs/                              # Documentation
+├── docs/                                 # Documentation
 │   ├── ACTUAL_MODELS_FROM_SUBMISSIONS.md
 │   ├── ENSEMBLE_COMPARISON.md
 │   ├── MODELS_TO_SHOWCASE.md
 │   └── BIGDATA2_LESSONS.md
 │
-├── src/                               # Source code
+├── src/                                  # Source code (importable package)
 │   ├── __init__.py
-│   ├── models/                        # Model implementations
+│   ├── config.py                         # Central configuration
+│   ├── models/                           # Model implementations
 │   │   ├── __init__.py
-│   │   ├── st_transformer.py          # ST Transformer
-│   │   ├── cnn_transformer.py         # Multiscale CNN
-│   │   ├── gru.py                     # GRU model
-│   │   ├── geometric.py               # Geometric network
-│   │   ├── position_st.py             # Position-specific
-│   │   └── ensemble.py                # Ensemble wrapper
-│   ├── competition_code/              # Actual Kaggle submission code
-│   │   ├── nfl_gnn.py                 # Full GNN (48KB, 1121 lines)
-│   │   ├── nfl_gru.py                 # Full GRU (64KB, 1526 lines)
-│   │   ├── nfl_2026.py                # Submission entry point
-│   │   └── ensemble_predict.py        # Ensemble inference
-│   ├── data/                          # Data processing
-│   │   ├── preprocessing.py           # Feature engineering
-│   │   ├── augmentation.py            # Data augmentation
-│   │   ├── dataset.py                 # PyTorch Datasets
-│   │   └── loader.py                  # Data loaders
-│   ├── training/                      # Training utilities
-│   │   ├── trainer.py                 # Training loop
-│   │   ├── losses.py                  # Loss functions
-│   │   ├── metrics.py                 # Evaluation metrics
-│   │   └── callbacks.py               # Callbacks
-│   └── utils/                         # Utilities
-│       ├── visualization.py
-│       └── helpers.py
+│   │   ├── st_transformer.py             # ST Transformer (0.547 LB)
+│   │   ├── cnn_transformer.py            # Multiscale CNN (0.548 LB)
+│   │   ├── gru.py                        # GRU model (0.557 LB)
+│   │   └── ensemble.py                   # Ensemble wrapper (0.540 LB)
+│   ├── competition_code/                 # Original Kaggle submission code
+│   │   ├── nfl_gnn.py                    # Full GNN pipeline (48KB)
+│   │   ├── nfl_gru.py                    # Full GRU pipeline (64KB)
+│   │   ├── nfl_2026.py                   # Submission entry point
+│   │   └── ensemble_predict.py           # Ensemble inference
+│   └── data/                             # Data processing
+│       ├── __init__.py
+│       ├── preprocessing.py              # Feature engineering (167 features)
+│       └── augmentation.py               # Data augmentation and TTA
 │
-├── notebooks/                         # Jupyter notebooks (13 total)
-│   ├── 01_data_exploration.ipynb      # Data exploration
-│   ├── 02_st_transformer_training.ipynb  # ST Transformer training
-│   ├── 03_inference_ensemble_guide.ipynb # Ensemble inference
-│   ├── 04_feature_engineering.ipynb   # Feature engineering
-│   ├── 05_gnn_geometric_training.ipynb  # GNN geometric model
-│   ├── 06_gru_training.ipynb          # GRU model training
-│   ├── 07_kaggle_submission.ipynb     # Kaggle API guide
-│   ├── 08_ensemble_prediction.ipynb   # Ensemble strategy
-│   ├── 09_geometric_features_deepdive.ipynb  # Geometric features
-│   ├── 10_metrics_and_evaluation.ipynb  # Metrics & evaluation
-│   ├── 11_experimental_architectures.ipynb  # 15+ architectures
-│   ├── 12_position_specific_models.ipynb  # Position models
-│   └── 13_ablation_studies.ipynb      # 847+ experiments
+├── notebooks/                            # Jupyter notebooks (13 total)
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_st_transformer_training.ipynb
+│   ├── 03_inference_ensemble_guide.ipynb
+│   ├── 04_feature_engineering.ipynb
+│   ├── 05_gnn_geometric_training.ipynb
+│   ├── 06_gru_training.ipynb
+│   ├── 07_kaggle_submission.ipynb
+│   ├── 08_ensemble_prediction.ipynb
+│   ├── 09_geometric_features_deepdive.ipynb
+│   ├── 10_metrics_and_evaluation.ipynb
+│   ├── 11_experimental_architectures.ipynb
+│   ├── 12_position_specific_models.ipynb
+│   └── 13_ablation_studies.ipynb
 │
-├── scripts/                           # Scripts
-│   ├── download_pretrained.py         # Download weights
-│   ├── train/                         # Training scripts
-│   │   ├── train_st_transformer.py
-│   │   ├── train_geometric.py
-│   │   ├── train_gru.py
-│   │   ├── train_multiscale_cnn.py
-│   │   └── train_position_st.py
-│   ├── inference/                     # Inference scripts
-│   │   ├── predict.py
-│   │   └── predict_ensemble.py
-│   └── evaluation/                    # Evaluation
-│       └── evaluate_cv.py
+├── scripts/
+│   └── download_pretrained.py            # Download pretrained weights
 │
-├── configs/                           # Configuration files
-│   ├── st_transformer.yaml
-│   ├── geometric.yaml
-│   ├── gru.yaml
-│   ├── ensemble.yaml
-│   └── default.yaml
-│
-├── pretrained/                        # Pretrained weights
-│   ├── README.md
-│   ├── 6layer_st_transformer_20fold/
-│   ├── multiscale_cnn_20fold/
-│   ├── gru_seed27_20fold/
-│   ├── position_st_combined/
-│   └── geometric_w9_5fold/
-│
-└── results/                           # Results
-    ├── cv_results/
-    ├── submission_scores.csv
-    └── figures/
+└── pretrained/
+    └── README.md                         # Download instructions
 ```
+
+**Note:** The `src/competition_code/` directory contains the original monolithic Kaggle submission scripts. The `src/models/` directory contains cleaned-up, importable versions of the same model architectures extracted from those scripts.
 
 ---
 

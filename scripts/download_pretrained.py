@@ -28,27 +28,27 @@ import json
 # TODO: Update with your actual Kaggle username and dataset names
 KAGGLE_DATASETS = {
     '6layer_st': {
-        'dataset': 'yourusername/6layer-seed700-flip-only',
+        'dataset': 'gdalbey/6layer-seed700-flip-only',
         'description': '6-Layer ST Transformer (0.547 LB)',
         'files': ['*.pt', '*.pkl', 'cv_results.json', '*.py']
     },
     'multiscale_cnn': {
-        'dataset': 'yourusername/st-multiscale-cnn-w10-20fold',
+        'dataset': 'gdalbey/st-multiscale-cnn-w10-20fold',
         'description': 'Multiscale CNN + Transformer (0.548 LB)',
         'files': ['*.pt', '*.pkl', 'cv_results.json']
     },
     'gru_seed27': {
-        'dataset': 'yourusername/gru-w9-seed27-20fold',
+        'dataset': 'gdalbey/gru-w9-seed27-20fold',
         'description': 'GRU with Geometric Features (0.557 LB)',
         'files': ['*.pt', '*.pkl', 'route_*.pkl', 'cv_results.json']
     },
     'position_st': {
-        'dataset': 'yourusername/nfl-bdb-2026-position-st-combined',
+        'dataset': 'gdalbey/nfl-bdb-2026-position-st-combined',
         'description': 'Position-Specific ST Models (0.553 LB)',
         'files': ['**/model.pt', '**/scaler.pkl', '**/*.json', '*.py']
     },
     'geometric': {
-        'dataset': 'yourusername/geo-w9-h64-b96-lr3e4',
+        'dataset': 'gdalbey/geo-w9-h64-b96-lr3e4',
         'description': 'Geometric Attention Network (0.559 LB)',
         'files': ['*.pt', '*.pkl', 'cv_results.json']
     },
@@ -99,15 +99,15 @@ def download_kaggle_dataset(dataset_name, output_dir):
             check=True
         )
 
-        print(f"   Downloaded successfully!")
+        print(f"  Downloaded successfully!")
         return True
 
     except subprocess.CalledProcessError as e:
-        print(f"  ✗ Error: {e}")
+        print(f"  [ERROR] {e}")
         print(f"  stderr: {e.stderr}")
         return False
     except FileNotFoundError:
-        print("  ✗ Error: kaggle CLI not found")
+        print("  [ERROR] kaggle CLI not found")
         print("  Please install: pip install kaggle")
         print("  And configure: kaggle config")
         return False
@@ -144,7 +144,7 @@ def download_model(model_name, output_dir='pretrained'):
         print(f"    Found {len(pkl_files)} .pkl files")
 
         if len(pt_files) == 0:
-            print(f"    ⚠ Warning: No .pt files found")
+            print(f"    WARNING: No .pt files found")
 
     return success
 
@@ -172,7 +172,7 @@ def download_all(output_dir='pretrained'):
     print("=" * 80)
 
     if success_count < total:
-        print("\n⚠ Some downloads failed. Check:")
+        print("\nWARNING: Some downloads failed. Check:")
         print("  1. Kaggle API is installed: pip install kaggle")
         print("  2. Kaggle credentials configured: ~/.kaggle/kaggle.json")
         print("  3. Dataset names are correct (update KAGGLE_DATASETS)")

@@ -1,8 +1,5 @@
 # NFL Big Data Bowl 2026 - Requirements
 
-# Core Dependencies
-python>=3.8
-
 # Deep Learning
 torch>=2.0.0
 torchvision>=0.15.0

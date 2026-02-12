@@ -29,22 +29,22 @@ python scripts/download_pretrained.py --models 6layer_st gru_seed27
 
 ```bash
 # ST Transformer (6-Layer)
-kaggle datasets download -d YOURUSERNAME/6layer-seed700-flip-only -p pretrained/6layer_st_20fold --unzip
+kaggle datasets download -d gdalbey/6layer-seed700-flip-only -p pretrained/6layer_st_20fold --unzip
 
 # Multiscale CNN
-kaggle datasets download -d YOURUSERNAME/st-multiscale-cnn-w10-20fold -p pretrained/multiscale_cnn_20fold --unzip
+kaggle datasets download -d gdalbey/st-multiscale-cnn-w10-20fold -p pretrained/multiscale_cnn_20fold --unzip
 
 # GRU (Seed 27)
-kaggle datasets download -d YOURUSERNAME/gru-w9-seed27-20fold -p pretrained/gru_seed27_20fold --unzip
+kaggle datasets download -d gdalbey/gru-w9-seed27-20fold -p pretrained/gru_seed27_20fold --unzip
 
 # Position-Specific ST
-kaggle datasets download -d YOURUSERNAME/nfl-bdb-2026-position-st-combined -p pretrained/position_st_combined --unzip
+kaggle datasets download -d gdalbey/nfl-bdb-2026-position-st-combined -p pretrained/position_st_combined --unzip
 
 # Geometric Network
-kaggle datasets download -d YOURUSERNAME/geo-w9-h64-b96-lr3e4 -p pretrained/geometric_w9_5fold --unzip
+kaggle datasets download -d gdalbey/geo-w9-h64-b96-lr3e4 -p pretrained/geometric_w9_5fold --unzip
 ```
 
-**TODO**: Replace `YOURUSERNAME` with your actual Kaggle username.
+**TODO**: Replace `gdalbey` with your actual Kaggle username.
 
 ---
 
@@ -181,11 +181,11 @@ See `notebooks/03_inference_ensemble_guide.ipynb` for complete examples.
 
 Update these with your actual Kaggle datasets:
 
-- **ST Transformer (6L)**: https://www.kaggle.com/datasets/YOURUSERNAME/6layer-seed700-flip-only
-- **Multiscale CNN**: https://www.kaggle.com/datasets/YOURUSERNAME/st-multiscale-cnn-w10-20fold
-- **GRU Seed 27**: https://www.kaggle.com/datasets/YOURUSERNAME/gru-w9-seed27-20fold
-- **Position ST**: https://www.kaggle.com/datasets/YOURUSERNAME/nfl-bdb-2026-position-st-combined
-- **Geometric**: https://www.kaggle.com/datasets/YOURUSERNAME/geo-w9-h64-b96-lr3e4
+- **ST Transformer (6L)**: https://www.kaggle.com/datasets/gdalbey/6layer-seed700-flip-only
+- **Multiscale CNN**: https://www.kaggle.com/datasets/gdalbey/st-multiscale-cnn-w10-20fold
+- **GRU Seed 27**: https://www.kaggle.com/datasets/gdalbey/gru-w9-seed27-20fold
+- **Position ST**: https://www.kaggle.com/datasets/gdalbey/nfl-bdb-2026-position-st-combined
+- **Geometric**: https://www.kaggle.com/datasets/gdalbey/geo-w9-h64-b96-lr3e4
 
 ---
 
