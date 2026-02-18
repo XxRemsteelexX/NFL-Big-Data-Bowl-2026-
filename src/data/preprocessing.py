@@ -93,8 +93,8 @@ def add_basic_features(df):
     df['velocity_y'] = df['s'] * np.cos(dir_rad)
 
     # Acceleration components
-    df['acceleration_x'] = df['a'] * np.cos(dir_rad)
-    df['acceleration_y'] = df['a'] * np.sin(dir_rad)
+    df['acceleration_x'] = df['a'] * np.sin(dir_rad)
+    df['acceleration_y'] = df['a'] * np.cos(dir_rad)
 
     # Derived motion features
     df['speed_squared'] = df['s'] ** 2

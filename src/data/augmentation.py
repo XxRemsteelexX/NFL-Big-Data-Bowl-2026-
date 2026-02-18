@@ -203,6 +203,8 @@ def apply_tta(model, X, scaler, device, augmentation_type='horizontal_flip'):
         >>> preds_with_tta = apply_tta(model, X, scaler, device)
     """
     if augmentation_type == 'horizontal_flip':
+        field_width = 53.3
+
         # Original predictions
         X_scaled = [scaler.transform(seq) for seq in X]
         X_tensor = torch.tensor(np.stack(X_scaled).astype(np.float32)).to(device)
@@ -210,11 +212,24 @@ def apply_tta(model, X, scaler, device, augmentation_type='horizontal_flip'):
         with torch.no_grad():
             pred_original = model(X_tensor).cpu().numpy()
 
-        # Flipped predictions (requires DataFrame input for proper flipping)
-        # This is a simplified version - see full implementation in ensemble notebook
+        # Flip y-coordinate (index 1) in each sequence
+        X_flipped = []
+        for seq in X:
+            s = seq.copy()
+            s[:, 1] = field_width - s[:, 1]
+            X_flipped.append(s)
 
-        # For now, return original (implement full TTA in actual use)
-        return pred_original
+        X_flip_scaled = [scaler.transform(seq) for seq in X_flipped]
+        X_flip_tensor = torch.tensor(np.stack(X_flip_scaled).astype(np.float32)).to(device)
+
+        with torch.no_grad():
+            pred_flipped = model(X_flip_tensor).cpu().numpy()
+
+        # Average original and flipped (negate dy of flipped)
+        pred_flipped[:, :, 1] = -pred_flipped[:, :, 1]
+        pred_tta = (pred_original + pred_flipped) / 2.0
+
+        return pred_tta
 
     else:
         raise ValueError(f"Unknown augmentation type: {augmentation_type}")

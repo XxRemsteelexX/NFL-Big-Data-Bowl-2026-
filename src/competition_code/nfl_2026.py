@@ -41,10 +41,27 @@ from src.config import Config
 # =============================================================================
 # New imports for evaluation API
 import polars as pl
-from src.utils import load_saved_ensemble_stt, invert_to_original_direction
-from src.preprocess import prepare_sequences_with_advanced_features
-from src.model import STTransformer
-from src.predict import predict_sst
+
+# ---------------------------------------------------------------------------
+# Kaggle-environment imports
+# ---------------------------------------------------------------------------
+# On Kaggle these modules are copied from the competition dataset at runtime
+# (see the shutil.copytree block above).  They are NOT part of the public
+# repository's src/ package, so guard them behind a try/except so the rest of
+# the repo stays importable for local development and testing.
+# ---------------------------------------------------------------------------
+try:
+    from src.utils import load_saved_ensemble_stt, invert_to_original_direction
+    from src.preprocess import prepare_sequences_with_advanced_features
+    from src.model import STTransformer
+    from src.predict import predict_sst
+except ImportError:
+    # Running outside Kaggle – these symbols are only needed at inference time.
+    load_saved_ensemble_stt = None
+    invert_to_original_direction = None
+    prepare_sequences_with_advanced_features = None
+    STTransformer = None
+    predict_sst = None
 
 # Global variables to store models (loaded once on first predict call)
 _models_loaded = False
